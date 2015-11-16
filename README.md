@@ -3,7 +3,7 @@
 
 ## 示例代码
 
-  from html_purifier import *
-  purifier = HTMLPurifier()
-  purifier.feed('<script>alert()</script><a href="javascript:alert()">XSS</a><img src="javascript:alert()">')
-  print(purifier.html())
+    from html_purifier import *
+    purifier = HTMLPurifier()
+    purifier.feed('<script>alert()</script><a href="javascript:alert()">XSS</a><img src="javascript:alert()">')
+    print(purifier.html())
