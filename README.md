@@ -1,5 +1,5 @@
 # HTMLPurifier
-基于 HTMLParser 的 HTML 代码净化器。用于过滤用户提交的不安全的 HTML 代码，避免跨站脚本注入。
+基于 `HTMLParser` 的 HTML 代码净化器。用于过滤用户提交的不安全的 HTML 代码，避免跨站脚本注入。
 
 ## 示例代码
 
@@ -19,3 +19,9 @@
 
 - 对于完整的 URL ，只允许 `url_schemes` 中定义过的协议；
 - 对于非完整的 URL ，只允许以 "/" 开头的绝对路径和以 "#" 开头的锚点。
+
+由于 `HTMLParser` 无法正确处理缺少 ";" 符号的 HTML Entities，所以 URL 开启相对路径支持是非常危险的。例如，下列代码无法被 `HTMLParser` 正确处理，但是在浏览器里会引发 XSS 注入：
+
+    <a href="javascript&#58alert()">XSS</a>
+    <!-- HTMLParser 认为这是相对路径而不是 Javascript 协议 -->
+
